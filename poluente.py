@@ -9,7 +9,7 @@ class Poluente:
     quality = ""
     done = False
 
-    def __init__(self, name, intervalos, limites):
+    def __init__(self, name, limites, intervalos):
         self.name = name
         self.intervalos = intervalos
         self.limites = limites
@@ -48,15 +48,20 @@ class Poluente:
 
     def __get_range(self):
         concentracao = self.inputted_concentracao
+        if concentracao == 0:
+            return (self.limites[0], self.limites[1], self.intervalos[0], self.intervalos[1])
         for i in range(len(self.intervalos) - 1):
-            if concentracao >= self.intervalos[i] and concentracao < self.intervalos[i + 1]:
+            if concentracao > self.intervalos[i] and concentracao <= self.intervalos[i + 1]:
                 return (self.limites[i], self.limites[i + 1], self.intervalos[i], self.intervalos[i + 1])
         return (None, None, None, None)
 
     def __get_air_quality(self):
         qualities = ["Bom", "Moderado", "Ruim", "Muito Ruim", "Péssimo"]
+        if self.iqa == 0:
+            self.limite = 0
+            return qualities[0]
         for i in range(len(self.limites) - 1):
-            if self.iqa >= self.limites[i] and self.iqa < self.limites[i + 1]:
+            if self.iqa > self.limites[i] and self.iqa <= self.limites[i + 1]:
                 self.limite = i
                 return qualities[i]
         self.limite = len(self.limites) - 1
