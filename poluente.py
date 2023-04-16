@@ -39,8 +39,8 @@ class Poluente:
         concentracao = self.inputted_concentracao
         (If, Ii, Cf, Ci) = self.__get_range()
         if (If == None or Ii == None or Cf == None or Ci == None):
-            self.iqa = self.limites[-1]
-            return self.limites[-1]
+            self.iqa = self.intervalos[-1]
+            return self.intervalos[-1]
 
         iqa = calculate_index(If, Ii, Cf, Ci, concentracao)
         self.iqa = iqa
