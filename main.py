@@ -19,7 +19,7 @@ while True:
     iqa.start_from_db()
     iqa.print_result()
 
-    restart = input("\nDeseja digitar outros valores? (s/n): ").lower()
+    restart = input("\nDeseja refazer os cálculos do Banco de Dados? (s/n): ").lower()
     if restart != "s":
         break
 
