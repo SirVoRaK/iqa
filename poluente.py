@@ -22,8 +22,11 @@ class Poluente:
         self.quality = ""
         self.done = False
 
-    def start(self):
-        self.inputted_concentracao = self.__input_concentracao()
+    def start(self, concentracao=None):
+        if concentracao != None:
+            self.inputted_concentracao = concentracao
+        else:
+            self.inputted_concentracao = self.__input_concentracao()
         self.iqa = self.__calculate_iqa()
         self.done = True
 

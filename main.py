@@ -1,3 +1,4 @@
+from bd import get_all_amostras, get_all_columns_avarage
 from poluente import Poluente
 from iqa import Iqa
 
@@ -15,7 +16,7 @@ iqa = Iqa(poluentes)
 print("Programa para cálculo do Índice de Qualidade do Ar (IQA)\n")
 
 while True:
-    iqa.start()
+    iqa.start_from_db()
     iqa.print_result()
 
     restart = input("\nDeseja digitar outros valores? (s/n): ").lower()

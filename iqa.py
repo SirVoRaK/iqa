@@ -1,3 +1,4 @@
+from bd import get_all_amostras, get_all_columns_avarage
 description = [
     "Nenhuma restrição.",
     "Pessoas de grupos sensiveis (crianças, idosos e pessoas com doenças respiratórias e cardíacas) podem apresentar sintomas como tosse seca e cansaço. A população, em geral, não é afetada.",
@@ -13,6 +14,14 @@ class Iqa:
     def start(self):
         for poluente in self.poluentes:
             poluente.start()
+        for poluente in self.poluentes:
+            poluente.print_result()
+
+    def start_from_db(self):
+        result = get_all_amostras()
+        avg = get_all_columns_avarage(result)
+        for poluente in self.poluentes:
+            poluente.start(avg[poluente.name.lower()])
         for poluente in self.poluentes:
             poluente.print_result()
 
