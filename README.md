@@ -1,5 +1,7 @@
 # Calculador de Índice de Qualidade do Ar (IQA)
 
+-   Conta do GitHub: Rodolfo Infantini Carneiro
+
 ## Grupo:
 
 -   Gabriel Ferraro Ferragute - 23013742
