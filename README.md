@@ -4,6 +4,7 @@
 
 ## Grupo:
 
+-   Cecília Rufatto dos Reis - 23012297
 -   Gabriel Ferraro Ferragute - 23013742
 -   Lara Bassinello Grandi - 23005879
 -   Rafael Oliveira Silva - 23002269
