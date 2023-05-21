@@ -7,7 +7,6 @@ class Poluente:
     limite = 0
     intervalo = 0
     quality = ""
-    done = False
 
     def __init__(self, name, limites, intervalos):
         self.name = name
@@ -20,23 +19,14 @@ class Poluente:
         self.limite = 0
         self.intervalo = 0
         self.quality = ""
-        self.done = False
 
-    def start(self, concentracao=None):
-        if concentracao != None:
-            self.inputted_concentracao = concentracao
-        else:
-            self.inputted_concentracao = self.__input_concentracao()
+    def calculate_iqa(self, concentracao):
+        self.inputted_concentracao = concentracao
         self.iqa = self.__calculate_iqa()
-        self.done = True
+        return self.iqa
 
-    def print_result(self):
-        self.quality = self.__get_air_quality()
-        print(f"A concentração de {self.name} é {self.inputted_concentracao} e o IQA é {self.iqa}, qualidade do ar: {self.quality}")
-
-    def __input_concentracao(self):
-        concentracao = input_float(f"Digite a concentração de {self.name}: ")
-        return concentracao
+    def input_concentracao(self):
+        return input_float(f"{self.name}: ")
 
     def __calculate_iqa(self):
         concentracao = self.inputted_concentracao
@@ -47,6 +37,7 @@ class Poluente:
 
         iqa = calculate_index(If, Ii, Cf, Ci, concentracao)
         self.iqa = iqa
+        self.quality = self.__get_air_quality()
         return iqa
 
     def __get_range(self):
