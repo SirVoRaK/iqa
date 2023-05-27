@@ -29,7 +29,11 @@ class Menu:
     def __init__(self, iqa):
         self.iqa = iqa
 
+    def divisor(self):
+        print("-"*30)
+
     def show(self):
+        self.divisor()
         for i in range(len(self.options)):
             print(f"{i + 1}. {self.options[i]}")
         print()
@@ -38,6 +42,8 @@ class Menu:
         return selected
 
     def run(self, selected):
+        self.divisor()
+        print()
         index = selected - 1
         func = getattr(self.iqa, f"option_{self.options[index].lower()}")
         func()

@@ -27,7 +27,6 @@ class Iqa:
 
         menu = Menu(self)
         selected = menu.show()
-        print()
         menu.run(selected)
         return self.exit
 
