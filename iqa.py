@@ -83,6 +83,10 @@ class Iqa:
     def option_alterar(self):
         Colors.print("Alterar amostra", Colors.BLUE)
         ids = self.list_amostras()
+        if len(ids) == 0:
+            Colors.print("Não há amostras cadastradas!", Colors.RED)
+            return
+
         selected_id = input_int_list_ranged("\nDigite o id da amostra que deseja alterar: ", ids)
         poluentes = self.input_poluentes()
         update_amostra(selected_id, poluentes)
@@ -91,6 +95,10 @@ class Iqa:
     def option_excluir(self):
         Colors.print("Excluir amostra", Colors.BLUE)
         ids = self.list_amostras()
+        if len(ids) == 0:
+            Colors.print("Não há amostras cadastradas!", Colors.RED)
+            return
+
         selected_id = input_int_list_ranged("\nDigite o id da amostra que deseja excluir: ", ids)
         if not ask(f"{Colors.RED}Tem certeza que deseja excluir a amostra {selected_id}?{Colors.RESET}"):
             print("Operação cancelada!")
