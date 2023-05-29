@@ -1,3 +1,6 @@
+from colors import Colors
+
+
 class Poluente:
     name = ""
     intervalos = []
@@ -26,7 +29,7 @@ class Poluente:
         return self.iqa
 
     def input_concentracao(self):
-        return input_float(f"{self.name}: ")
+        return input_float(f"{Colors.YELLOW}{self.name}:{Colors.RESET} ")
 
     def __calculate_iqa(self):
         concentracao = self.inputted_concentracao
@@ -68,5 +71,5 @@ def input_float(message):
     try:
         return float(input(message))
     except:
-        print("Digite apenas números!")
+        Colors.print("Digite apenas números!", Colors.RED)
         return input_float(message)

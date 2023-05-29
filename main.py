@@ -1,3 +1,4 @@
+from colors import Colors
 from poluente import Poluente
 from iqa import Iqa
 
@@ -12,7 +13,7 @@ poluentes = [
 ]
 iqa = Iqa(poluentes)
 
-print("Programa para cálculo do Índice de Qualidade do Ar (IQA)\n")
+Colors.print("Programa para cálculo do Índice de Qualidade do Ar (IQA)\n", Colors.BLUE)
 
 while True:
     exit = iqa.start()
@@ -23,4 +24,4 @@ while True:
     iqa.reset()
     print("\n")
 
-print("\nObrigado por usar o programa! :)")
+Colors.print("\nObrigado por usar o programa! :)", Colors.BLUE)

@@ -1,3 +1,5 @@
+from colors import Colors
+
 def input_int_ranged(msg, min = 0, max = None):
     try:
         value = int(input(msg))
@@ -5,7 +7,7 @@ def input_int_ranged(msg, min = 0, max = None):
             raise ValueError
         return value
     except ValueError:
-        print("Valor inválido!")
+        Colors.print("Valor inválido!", Colors.RED)
         return input_int_ranged(msg, min, max)
 def input_int_list_ranged(msg, list):
     try:
@@ -30,12 +32,12 @@ class Menu:
         self.iqa = iqa
 
     def divisor(self):
-        print("-"*30)
+        print(Colors.PINK+("-"*30)+Colors.RESET)
 
     def show(self):
         self.divisor()
         for i in range(len(self.options)):
-            print(f"{i + 1}. {self.options[i]}")
+            print(f"{Colors.GREEN}{i + 1}.{Colors.RESET} {self.options[i]}")
         print()
 
         selected = input_int_ranged("Selecione uma opção: ", 1, len(self.options))
