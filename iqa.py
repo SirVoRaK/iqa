@@ -1,3 +1,4 @@
+from colors import Colors
 from bd import get_all_amostras, get_all_columns_avarage, save_amostra, update_amostra, delete_amostra
 from menu import Menu, input_int_list_ranged
 
@@ -5,7 +6,7 @@ def ask(msg):
     answer = input(f"{msg} (s/n): ").lower()
     if answer == "s" or answer == "n":
         return answer == "s"
-    print("Resposta inválida!\n")
+    Colors.print("Resposta inválida!\n", Colors.RED)
     return ask(msg)
 
 description = [
@@ -27,7 +28,6 @@ class Iqa:
 
         menu = Menu(self)
         selected = menu.show()
-        print()
         menu.run(selected)
         return self.exit
 
@@ -42,9 +42,9 @@ class Iqa:
         iqa = worst_poluente.iqa
 
         print()
-        print(f"Classificação: {quality}.")
-        print(f"Iqa: {iqa}.")
-        print(f"Efeito: {description}")
+        print(f"{Colors.YELLOW}Classificação:{Colors.RESET} {quality}.")
+        print(f"{Colors.YELLOW}Iqa:{Colors.RESET} {iqa}.")
+        print(f"{Colors.YELLOW}Efeito:{Colors.RESET} {description}")
 
     def __get_description(self, limite):
         return description[limite]
@@ -57,7 +57,7 @@ class Iqa:
         return worst_poluente
 
     def dict_to_string(self, dict):
-        return ", ".join([f"{key}: {value}" for key, value in dict.items() if key != "id"])
+        return ", ".join([f"{Colors.BLUE}{key}:{Colors.RESET} {value}" for key, value in dict.items() if key != "id"])
 
     def list_amostras(self):
         result = get_all_amostras()
@@ -65,7 +65,7 @@ class Iqa:
         for row in result:
             row_text = self.dict_to_string(row)
             ids.append(row["id"])
-            print(f"{row['id']} - {row_text}")
+            print(f"{Colors.YELLOW}{row['id']} -{Colors.RESET} {row_text}")
         return ids
 
     def input_poluentes(self):
@@ -75,34 +75,34 @@ class Iqa:
         return poluentes
 
     def option_adicionar(self):
-        print("Adicionar amostra")
+        Colors.print("Adicionar amostra", Colors.BLUE)
         poluentes = self.input_poluentes()
         save_amostra(poluentes)
-        print("Amostra adicionada com sucesso!")
+        Colors.print("Amostra adicionada com sucesso!", Colors.GREEN)
 
     def option_alterar(self):
-        print("Alterar amostra")
+        Colors.print("Alterar amostra", Colors.BLUE)
         ids = self.list_amostras()
         selected_id = input_int_list_ranged("\nDigite o id da amostra que deseja alterar: ", ids)
         poluentes = self.input_poluentes()
         update_amostra(selected_id, poluentes)
-        print("Amostra alterada com sucesso!")
+        Colors.print("Amostra alterada com sucesso!", Colors.GREEN)
 
     def option_excluir(self):
-        print("Excluir amostra")
+        Colors.print("Excluir amostra", Colors.BLUE)
         ids = self.list_amostras()
         selected_id = input_int_list_ranged("\nDigite o id da amostra que deseja excluir: ", ids)
-        if not ask(f"Tem certeza que deseja excluir a amostra {selected_id}?"):
+        if not ask(f"{Colors.RED}Tem certeza que deseja excluir a amostra {selected_id}?{Colors.RESET}"):
             print("Operação cancelada!")
             return
         delete_amostra(selected_id)
-        print("Amostra excluída com sucesso!")
+        Colors.print("Amostra excluída com sucesso!", Colors.GREEN)
 
     def option_classificar(self):
-        print("Classificar amostras")
+        Colors.print("Classificar amostras", Colors.BLUE)
         result = get_all_amostras()
         if len(result) == 0:
-            print("Não há amostras cadastradas!")
+            Colors.print("Não há amostras cadastradas!", Colors.RED)
             return
 
         avg = get_all_columns_avarage(result)
