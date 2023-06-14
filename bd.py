@@ -31,7 +31,7 @@ def get_all_amostras():
     poluentes = ['id', 'mp10', 'mp2.5', 'o3', 'co', 'no2', 'so2']
     return to_dict(result, poluentes)
 
-def save_amostra(amostra):
+def insert_amostra(amostra):
     connection = get_connection()
     cursor = connection.cursor()
     query = 'INSERT INTO amostras (mp10, `mp2.5`, o3, co, no2, so2) VALUES (%s, %s, %s, %s, %s, %s)'

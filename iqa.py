@@ -1,5 +1,5 @@
 from colors import Colors
-from bd import get_all_amostras, get_all_columns_avarage, save_amostra, update_amostra, delete_amostra
+from bd import get_all_amostras, get_all_columns_avarage, insert_amostra, update_amostra, delete_amostra
 from menu import Menu, input_int_list_ranged
 
 def ask(msg):
@@ -77,7 +77,7 @@ class Iqa:
     def option_adicionar(self):
         Colors.print("Adicionar amostra", Colors.BLUE)
         poluentes = self.input_poluentes()
-        save_amostra(poluentes)
+        insert_amostra(poluentes)
         Colors.print("Amostra adicionada com sucesso!", Colors.GREEN)
 
     def option_alterar(self):
