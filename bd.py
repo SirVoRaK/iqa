@@ -1,7 +1,7 @@
 from mysql import connector
 
-#host = 'mysql.rodolfoi.tech'
-host = 'localhost'
+host = 'mysql.rodolfoi.tech'
+#host = 'localhost'
 username = 'rodolfo_infantini'
 password = '12345678'
 database = 'projeto_integrador_1'
