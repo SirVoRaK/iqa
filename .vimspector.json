@@ -1,0 +1,20 @@
+{
+    "configurations": {
+        "Iqa: Launch": {
+            "adapter": "debugpy",
+            "filetypes": ["python"],
+            "configuration": {
+                "name": "Causa efeito: Launch",
+                "type": "python",
+                "request": "launch",
+                "cwd": "${workspaceRoot}",
+                "python": "/usr/bin/python3",
+                "stopOnEntry": true,
+                "console": "externalTerminal",
+                "debugOptions": [],
+                "program": "${workspaceRoot}/main.py",
+                "showReturnValue": true
+            }
+        }
+    }
+}
